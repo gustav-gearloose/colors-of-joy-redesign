@@ -255,6 +255,32 @@
   <!-- Scripts -->
   <script src="../image-pool.js"></script>
   <script>
+    // Use shared image pool with curated hero images for art gallery aesthetic
+    const IMAGES = createImageMapping({
+      hero: {
+        one: "https://colorsofjoy.dk/webshopmedia/SEA%2010.jpeg",
+        two: "https://colorsofjoy.dk/webshopmedia/Lilly%2010.jpeg",
+        three: "https://colorsofjoy.dk/webshopmedia/Sofia%2001.jpeg",
+        four: "https://colorsofjoy.dk/webshopmedia/Zoe%CC%81%2001.jpeg",
+        five: "https://colorsofjoy.dk/webshopmedia/Always%2087.jpeg"
+      }
+    });
+
+    // Bind images to data-img attributes
+    document.querySelectorAll("[data-img]").forEach(el => {
+      const path = el.dataset.img.split(".");
+      let ref = IMAGES;
+      path.forEach(k => ref = ref[k]);
+
+      // Use tagName to determine if it's an img element or background element
+      if (el.tagName === 'IMG') {
+        el.src = ref;
+      } else {
+        el.style.backgroundImage = `url(${ref})`;
+      }
+    });
+
+    // Template switcher logic
     const select = document.getElementById('templateSelect');
     const templates = document.querySelectorAll('.template');
 
