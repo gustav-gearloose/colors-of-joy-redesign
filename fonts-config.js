@@ -33,7 +33,7 @@ const FONT_COLLECTIONS = [
     category: 'Calligraphy',
     fontFamily: "'Apple Chancery', cursive",
     description: 'Classic calligraphic elegance',
-    suitableFor: ['header'],
+    suitableFor: ['header', 'body'],
     featured: false
   },
   {
@@ -42,7 +42,7 @@ const FONT_COLLECTIONS = [
     category: 'Calligraphy',
     fontFamily: "'Lucida Calligraphy', cursive",
     description: 'Formal calligraphic style with refined details',
-    suitableFor: ['header'],
+    suitableFor: ['header', 'body'],
     featured: true
   },
   {
@@ -51,7 +51,7 @@ const FONT_COLLECTIONS = [
     category: 'Calligraphy',
     fontFamily: "'Modern Love', cursive",
     description: 'Contemporary calligraphy with romantic flair',
-    suitableFor: ['header'],
+    suitableFor: ['header', 'body'],
     featured: true
   },
   {
@@ -60,7 +60,7 @@ const FONT_COLLECTIONS = [
     category: 'Calligraphy',
     fontFamily: "'Monotype Corsiva', cursive",
     description: 'Timeless italic script with sophistication',
-    suitableFor: ['header'],
+    suitableFor: ['header', 'body'],
     featured: false
   },
   {
@@ -69,7 +69,7 @@ const FONT_COLLECTIONS = [
     category: 'Calligraphy',
     fontFamily: "'Pristina', cursive",
     description: 'Delicate script with graceful letterforms',
-    suitableFor: ['header'],
+    suitableFor: ['header', 'body'],
     featured: false
   },
   {
