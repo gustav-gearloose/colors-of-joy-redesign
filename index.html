@@ -22,6 +22,10 @@
   --shadow: rgba(0, 0, 0, 0.08);
   --radius: 8px;
   --radius-lg: 12px;
+
+  /* Font variables - can be overridden by font selector */
+  --font-header: Georgia, serif;
+  --font-body: Georgia, serif;
 }
 
 /* ======================================================
@@ -34,10 +38,14 @@
 }
 
 body {
-  font-family: Georgia, serif;
+  font-family: var(--font-body);
   background: var(--bg-main);
   color: var(--text-dark);
   line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-header);
 }
 
 /* ======================================================
@@ -60,6 +68,7 @@ body {
 }
 
 .header h1 {
+  font-family: var(--font-header);
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
   color: var(--text-dark);
@@ -142,6 +151,82 @@ body {
 .filter-btn.reset:hover {
   color: var(--text-dark);
   background: transparent;
+}
+
+/* ======================================================
+   FONT SELECTOR
+====================================================== */
+.font-selectors {
+  max-width: 1400px;
+  margin: 0 auto 2rem;
+  padding: 0 2rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.font-selector-group {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.font-selector-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.font-selector-dropdown {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  background: white;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.font-selector-dropdown:hover {
+  border-color: var(--accent);
+}
+
+.font-selector-dropdown:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(184, 138, 90, 0.1);
+}
+
+.font-reset-btn {
+  align-self: flex-end;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.font-reset-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--bg-soft);
 }
 
 /* ======================================================
@@ -233,6 +318,7 @@ body {
 }
 
 .card-title {
+  font-family: var(--font-header);
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
   color: var(--text-dark);
@@ -401,6 +487,19 @@ body {
 </section>
 
 <!-- ======================================================
+     FONT SELECTORS
+====================================================== -->
+<section class="font-selectors">
+  <div id="headerFontSelector">
+    <!-- Header font selector will be rendered here -->
+  </div>
+  <div id="bodyFontSelector">
+    <!-- Body font selector will be rendered here -->
+  </div>
+  <button class="font-reset-btn" onclick="resetFonts()">Reset Fonts</button>
+</section>
+
+<!-- ======================================================
      STATS
 ====================================================== -->
 <div class="stats">
@@ -436,6 +535,8 @@ body {
      SCRIPTS
 ====================================================== -->
 <script src="templates-config.js"></script>
+<script src="fonts-config.js"></script>
+<script src="font-selector.js"></script>
 <script>
 // =====================================================
 // STATE MANAGEMENT

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Colors of Joy – Font Selector Demo</title>
+
+<style>
+:root {
+  --bg-main: #f6f3ed;
+  --bg-soft: #efe9df;
+  --bg-card: #ffffff;
+  --text-dark: #2b2b2b;
+  --text-muted: #6f6a64;
+  --text-light: #9b9691;
+  --accent: #b88a5a;
+  --accent-hover: #a67a4a;
+  --border: #e0ddd6;
+  --shadow: rgba(0, 0, 0, 0.08);
+  --radius: 8px;
+  --radius-lg: 12px;
+
+  /* Font variables - can be overridden by font selector */
+  --font-header: Georgia, serif;
+  --font-body: Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-main);
+  color: var(--text-dark);
+  line-height: 1.6;
+  padding: 2rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-header);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.demo-header {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.demo-header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+.demo-header p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+
+/* Font Selector Styles */
+.font-selectors {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 2px 8px var(--shadow);
+  margin-bottom: 2rem;
+}
+
+.font-selector-group {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.font-selector-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.font-selector-dropdown {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  background: white;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.font-selector-dropdown:hover {
+  border-color: var(--accent);
+}
+
+.font-selector-dropdown:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(184, 138, 90, 0.1);
+}
+
+.font-reset-btn {
+  align-self: flex-end;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.font-reset-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--bg-soft);
+}
+
+/* Demo Content */
+.demo-content {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.demo-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+.demo-content h3 {
+  font-size: 1.5rem;
+  margin: 2rem 0 1rem;
+  color: var(--text-dark);
+}
+
+.demo-content p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 2rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: background 0.2s ease;
+}
+
+.back-link:hover {
+  background: var(--accent-hover);
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">← Back to Gallery</a>
+
+  <div class="demo-header">
+    <h1>Colors of Joy</h1>
+    <p>Font Selector Demo – Choose your perfect typography combination</p>
+  </div>
+
+  <!-- Font Selectors -->
+  <section class="font-selectors">
+    <div id="headerFontSelector">
+      <!-- Header font selector will be rendered here -->
+    </div>
+    <div id="bodyFontSelector">
+      <!-- Body font selector will be rendered here -->
+    </div>
+    <button class="font-reset-btn" onclick="resetFonts()">Reset Fonts</button>
+  </section>
+
+  <!-- Demo Content -->
+  <div class="demo-content">
+    <h2>Welcome to Colors of Joy</h2>
+    <p>
+      This is a demonstration of the global font selector. You can choose different fonts for headers and body text,
+      and the changes will apply across all pages on the site. Your preferences are saved in your browser's localStorage.
+    </p>
+
+    <h3>Header Font Preview</h3>
+    <p>
+      The header font is applied to all h1, h2, h3, h4, h5, and h6 elements. Try selecting different decorative fonts
+      like Rastanty Cortex, Modern Love, or calligraphic styles to see how they transform the headers.
+    </p>
+
+    <h3>Body Font Preview</h3>
+    <p>
+      The body font is applied to all paragraph text and general content. Choose readable serif fonts like Georgia
+      or Garamond for classic elegance, or clean sans-serif fonts like Helvetica for a modern look.
+    </p>
+
+    <h3>Font Categories</h3>
+    <p>
+      <strong>Handwriting:</strong> Casual, flowing scripts perfect for a personal touch. Examples include Rastanty Cortex, Lucida Handwriting, and Segoe Print.
+    </p>
+    <p>
+      <strong>Calligraphy:</strong> Elegant, formal scripts ideal for sophisticated headers. Try Apple Chancery, Modern Love, or Pristina.
+    </p>
+    <p>
+      <strong>Serif:</strong> Traditional fonts with decorative strokes, excellent for both headers and body text. Georgia, Garamond, and Baskerville offer timeless elegance.
+    </p>
+    <p>
+      <strong>Sans-serif:</strong> Clean, modern fonts without decorative strokes. Helvetica, Avenir, and Futura provide contemporary style.
+    </p>
+
+    <h3>How It Works</h3>
+    <p>
+      The font selector uses CSS custom properties (CSS variables) to apply fonts globally. When you select a font,
+      it updates the --font-header and --font-body variables, which are referenced throughout the site's stylesheets.
+      Your selections are saved to localStorage, so they persist across page refreshes and navigation.
+    </p>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="fonts-config.js"></script>
+<script src="font-selector.js"></script>
+
+</body>
+</html>
