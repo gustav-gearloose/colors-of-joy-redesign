@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8" />
+<title>Colors of Joy – SPA Template Playground</title>
+
+<style>
+/* =====================
+   GLOBAL STYLES
+===================== */
+
+:root {
+  --bg-warm: #f4f0e6;
+  --bg-beige: #efe6d8;
+  --text-dark: #2b2b2b;
+  --accent: #b88a5a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: var(--bg-warm);
+  color: var(--text-dark);
+}
+
+h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  max-width: 460px;
+  line-height: 1.7;
+}
+
+button {
+  padding: 0.7rem 2rem;
+  border: 1px solid var(--text-dark);
+  background: transparent;
+  cursor: pointer;
+}
+
+/* =====================
+   TEMPLATE SWITCHER
+===================== */
+
+#switcher {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
+}
+
+#switcher select {
+  padding: 0.5rem;
+}
+
+/* =====================
+   SHARED LAYOUTS
+===================== */
+
+.hero-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 90vh;
+}
+
+.hero-image {
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gallery-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.gallery-3 img,
+.gallery-2 img,
+.gallery-4 img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+}
+
+.gallery-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.gallery-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.section {
+  padding: 4rem;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .hero-split {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-3,
+  .gallery-2,
+  .gallery-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content {
+    padding: 3rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================
+     TEMPLATE SWITCHER
+===================== -->
+
+<!-- ======================================================
+     NAVIGATION
+====================================================== -->
+<div id="backNav">
+  <a href="../index.html">Back to Gallery</a>
+</div>
+
+<div id="switcher">
+  <select id="templateSelect">
+    <option value="t1">Template 1 – Soft Split Editorial</option>
+    <option value="t2">Template 2 – Image First</option>
+    <option value="t3">Template 3 – Product Gallery</option>
+    <option value="t4">Template 4 – Warm Story</option>
+    <option value="t5">Template 5 – Brand Universe</option>
+  </select>
+</div>
+
+<!-- =====================
+     TEMPLATE 1
+===================== -->
+<section id="t1" class="template hero-split">
+  <div class="hero-image" data-img="t1.hero.left"></div>
+  <div class="hero-content">
+    <h1>Colors of Joy</h1>
+    <p>Håndlavede smykker i farver, skabt til at blive brugt igen og igen.</p>
+    <button>Shop kollektionen</button>
+  </div>
+</section>
+
+<section class="gallery-3 template" id="t1-gallery">
+  <img data-img="t1.gallery.one">
+  <img data-img="t1.gallery.two">
+  <img data-img="t1.gallery.three">
+</section>
+
+<!-- =====================
+     TEMPLATE 2
+===================== -->
+<section id="t2" class="template hero-split hidden">
+  <div class="hero-image" data-img="t2.hero.left"></div>
+  <div class="hero-content">
+    <small>Ny kollektion</small>
+    <h1>Joyful Essentials</h1>
+    <button>Shop nu</button>
+  </div>
+</section>
+
+<section class="gallery-2 template hidden" id="t2-gallery">
+  <img data-img="t2.blocks.left">
+  <img data-img="t2.blocks.right">
+</section>
+
+<!-- =====================
+     TEMPLATE 3
+===================== -->
+<section id="t3" class="template hero-split hidden">
+  <div class="hero-image" data-img="t3.hero.left"></div>
+  <div class="hero-content">
+    <h1>Designet til at blive brugt</h1>
+    <p>Smykker der kan mikses, lag-på-lag eller stå alene.</p>
+  </div>
+</section>
+
+<section class="gallery-4 template hidden" id="t3-gallery">
+  <img data-img="t3.products.one">
+  <img data-img="t3.products.two">
+  <img data-img="t3.products.three">
+  <img data-img="t3.products.four">
+</section>
+
+<!-- =====================
+     TEMPLATE 4
+===================== -->
+<section id="t4" class="template hero-split hidden" style="background:#efe6d8">
+  <div class="hero-image" data-img="t4.hero.left"></div>
+  <div class="hero-content">
+    <h1>Farver. Glæde. Håndværk.</h1>
+    <p>Et univers af smykker skabt med kærlighed til materialer.</p>
+  </div>
+</section>
+
+<section class="section template hidden" id="t4-section">
+  <img data-img="t4.mood.one" style="width:70%;max-width:600px;">
+</section>
+
+<!-- =====================
+     TEMPLATE 5
+===================== -->
+<section id="t5" class="template hero-split hidden">
+  <div class="hero-image" data-img="t5.hero.left"></div>
+  <div class="hero-content">
+    <h1>A Piece of Joy</h1>
+    <p>Smykker som bliver en del af din hverdag – og dine minder.</p>
+  </div>
+</section>
+
+<section class="gallery-2 template hidden" id="t5-gallery">
+  <img data-img="t5.story.one">
+  <img data-img="t5.story.two">
+</section>
+
+<!-- =====================
+     IMAGE CONFIG + JS
+===================== -->
+<script src="../image-pool.js"></script>
+<script>
+/* =====================
+   IMAGE CONFIGURATION
+===================== */
+
+// Use shared image pool with curated hero images for initial SPA templates
+const IMAGES = createImageMapping({
+  t1: {
+    hero: { left: "https://colorsofjoy.dk/webshopmedia/Sofia%2003.jpeg" },
+    gallery: {
+      one: "https://colorsofjoy.dk/webshopmedia/Liva%2004.jpeg",
+      two: "https://colorsofjoy.dk/webshopmedia/Liva%2002.jpeg",
+      three: "https://colorsofjoy.dk/webshopmedia/Liva%2003.jpeg"
+    }
+  },
+  t2: {
+    hero: { left: "https://colorsofjoy.dk/webshopmedia/Tigerlilly%2004.jpeg" },
+    blocks: {
+      left: "https://colorsofjoy.dk/webshopmedia/Always%2087.jpeg",
+      right: "https://colorsofjoy.dk/webshopmedia/Always%2088.jpeg"
+    }
+  },
+  t3: {
+    hero: { left: "https://colorsofjoy.dk/webshopmedia/SEA%2010.jpeg" },
+    products: {
+      one: "https://colorsofjoy.dk/webshopmedia/Tigerlilly%2001.jpeg",
+      two: "https://colorsofjoy.dk/webshopmedia/Tigerlilly%2002.jpeg",
+      three: "https://colorsofjoy.dk/webshopmedia/Tigerlilly%2005.jpeg",
+      four: "https://colorsofjoy.dk/webshopmedia/Tigerlilly%2008.jpeg"
+    }
+  },
+  t4: {
+    hero: { left: "https://colorsofjoy.dk/webshopmedia/Zoe%CC%81%2001.jpeg" },
+    mood: {
+      one: "https://colorsofjoy.dk/webshopmedia/Zoe%CC%81%2002.jpeg"
+    }
+  },
+  t5: {
+    hero: { left: "https://colorsofjoy.dk/webshopmedia/Always%2090.jpeg" },
+    story: {
+      one: "https://colorsofjoy.dk/webshopmedia/Sofia%2001.jpeg",
+      two: "https://colorsofjoy.dk/webshopmedia/Sofia%2005.jpeg"
+    }
+  }
+});
+
+/* =====================
+   IMAGE BINDING
+===================== */
+
+document.querySelectorAll("[data-img]").forEach(el => {
+  const path = el.dataset.img.split(".");
+  let ref = IMAGES;
+
+  path.forEach(k => ref = ref[k]);
+
+  if (el.tagName === "IMG") {
+    el.src = ref;
+  } else {
+    el.style.backgroundImage = `url(${ref})`;
+  }
+});
+
+/* =====================
+   TEMPLATE SWITCHING
+===================== */
+
+const templates = document.querySelectorAll(".template");
+
+document.getElementById("templateSelect").addEventListener("change", e => {
+  const value = e.target.value;
+
+  templates.forEach(t => t.classList.add("hidden"));
+
+  document.querySelectorAll(`#${value}, #${value}-gallery, #${value}-section`)
+    .forEach(el => el && el.classList.remove("hidden"));
+});
+</script>
+
+</body>
+</html>

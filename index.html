@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Colors of Joy – Template Gallery</title>
+
+<style>
+/* ======================================================
+   DESIGN SYSTEM
+====================================================== */
+:root {
+  --bg-main: #f6f3ed;
+  --bg-soft: #efe9df;
+  --bg-card: #ffffff;
+  --text-dark: #2b2b2b;
+  --text-muted: #6f6a64;
+  --text-light: #9b9691;
+  --accent: #b88a5a;
+  --accent-hover: #a67a4a;
+  --border: #e0ddd6;
+  --shadow: rgba(0, 0, 0, 0.08);
+  --radius: 8px;
+  --radius-lg: 12px;
+}
+
+/* ======================================================
+   BASE
+====================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Georgia, serif;
+  background: var(--bg-main);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* ======================================================
+   HEADER
+====================================================== */
+.header {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  padding: 2rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.header p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+/* ======================================================
+   CONTROLS
+====================================================== */
+.controls {
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 250px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  background: var(--bg-card);
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.filter-group {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  color: var(--text-dark);
+  cursor: pointer;
+  font-family: Georgia, serif;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent);
+  background: var(--bg-soft);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.filter-btn.reset {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  text-decoration: underline;
+}
+
+.filter-btn.reset:hover {
+  color: var(--text-dark);
+  background: transparent;
+}
+
+/* ======================================================
+   STATS
+====================================================== */
+.stats {
+  max-width: 1400px;
+  margin: 0 auto 2rem;
+  padding: 0 2rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.stats .count {
+  font-weight: bold;
+  color: var(--text-dark);
+}
+
+/* ======================================================
+   GALLERY
+====================================================== */
+.gallery {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 2rem;
+}
+
+.template-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.template-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: var(--accent);
+}
+
+.card-image {
+  width: 100%;
+  height: 280px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.card-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--accent);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.card-content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  margin-bottom: 1rem;
+}
+
+.card-style {
+  display: inline-block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.card-meta {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 0.75rem;
+}
+
+.card-description {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.tag {
+  font-size: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  background: var(--bg-soft);
+  color: var(--text-muted);
+  border-radius: var(--radius);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.card-button {
+  display: block;
+  width: 100%;
+  padding: 0.85rem;
+  background: var(--text-dark);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.card-button:hover {
+  background: var(--accent-hover);
+}
+
+/* ======================================================
+   EMPTY STATE
+====================================================== */
+.empty-state {
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 3rem;
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.empty-state h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+.empty-state p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+/* ======================================================
+   FOOTER
+====================================================== */
+.footer {
+  background: var(--bg-soft);
+  border-top: 1px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  margin-top: 4rem;
+}
+
+.footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+@media (max-width: 900px) {
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content,
+  .controls,
+  .stats,
+  .gallery {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .card-content {
+    padding: 1rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ======================================================
+     HEADER
+====================================================== -->
+<header class="header">
+  <div class="header-content">
+    <h1>Colors of Joy</h1>
+    <p>Design Template Gallery – Explore and compare different layout approaches</p>
+  </div>
+</header>
+
+<!-- ======================================================
+     CONTROLS
+====================================================== -->
+<section class="controls">
+  <div class="search-box">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search templates by name, style, or tags..."
+      autocomplete="off"
+    />
+  </div>
+  <div class="filter-group" id="styleFilters"></div>
+  <button class="filter-btn reset" id="resetBtn">Reset filters</button>
+</section>
+
+<!-- ======================================================
+     STATS
+====================================================== -->
+<div class="stats">
+  Showing <span class="count" id="resultCount">0</span> template collections
+</div>
+
+<!-- ======================================================
+     GALLERY
+====================================================== -->
+<main class="gallery" id="gallery">
+  <!-- Cards will be dynamically generated here -->
+</main>
+
+<!-- ======================================================
+     EMPTY STATE
+====================================================== -->
+<div class="empty-state" id="emptyState" style="display: none;">
+  <h2>No templates found</h2>
+  <p>Try adjusting your search or filters to find what you're looking for.</p>
+</div>
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+<footer class="footer">
+  <p>
+    Colors of Joy Template Gallery &copy; 2024<br />
+    <small>Built with vanilla JavaScript – no frameworks required</small>
+  </p>
+</footer>
+
+<!-- ======================================================
+     SCRIPTS
+====================================================== -->
+<script src="templates-config.js"></script>
+<script>
+// =====================================================
+// STATE MANAGEMENT
+// =====================================================
+let currentFilter = {
+  search: '',
+  style: null
+};
+
+// =====================================================
+// RENDER FUNCTIONS
+// =====================================================
+
+/**
+ * Create HTML for a single template card
+ */
+function createTemplateCard(template) {
+  const badgeHTML = template.featured
+    ? '<div class="card-badge">Featured</div>'
+    : '';
+
+  const tagsHTML = template.tags
+    .map(tag => `<span class="tag">${tag}</span>`)
+    .join('');
+
+  return `
+    <article class="template-card">
+      <div class="card-image" style="background-image: url('${template.thumbnail}')">
+        ${badgeHTML}
+      </div>
+      <div class="card-content">
+        <div class="card-header">
+          <span class="card-style">${template.style}</span>
+          <h2 class="card-title">${template.name}</h2>
+          <div class="card-meta">${template.variations} design variations</div>
+        </div>
+        <p class="card-description">${template.description}</p>
+        <div class="card-tags">
+          ${tagsHTML}
+        </div>
+        <a href="templates/${template.file}" class="card-button">
+          View Templates
+        </a>
+      </div>
+    </article>
+  `;
+}
+
+/**
+ * Render all template cards
+ */
+function renderGallery(templates) {
+  const gallery = document.getElementById('gallery');
+  const emptyState = document.getElementById('emptyState');
+  const resultCount = document.getElementById('resultCount');
+
+  if (templates.length === 0) {
+    gallery.style.display = 'none';
+    emptyState.style.display = 'block';
+    resultCount.textContent = '0';
+    return;
+  }
+
+  gallery.style.display = 'grid';
+  emptyState.style.display = 'none';
+  resultCount.textContent = templates.length;
+
+  gallery.innerHTML = templates.map(createTemplateCard).join('');
+}
+
+/**
+ * Render style filter buttons
+ */
+function renderStyleFilters() {
+  const container = document.getElementById('styleFilters');
+  const styles = getAvailableStyles();
+
+  const buttonsHTML = styles.map(style => {
+    const count = getTemplatesByStyle(style).length;
+    return `
+      <button
+        class="filter-btn"
+        data-style="${style}"
+        onclick="filterByStyle('${style}')"
+      >
+        ${style} (${count})
+      </button>
+    `;
+  }).join('');
+
+  container.innerHTML = buttonsHTML;
+}
+
+// =====================================================
+// FILTER FUNCTIONS
+// =====================================================
+
+/**
+ * Get filtered templates based on current state
+ */
+function getFilteredTemplates() {
+  let templates = getAllTemplates();
+
+  // Apply style filter
+  if (currentFilter.style) {
+    templates = templates.filter(t => t.style === currentFilter.style);
+  }
+
+  // Apply search filter
+  if (currentFilter.search) {
+    templates = searchTemplates(currentFilter.search);
+    // Re-apply style filter if active
+    if (currentFilter.style) {
+      templates = templates.filter(t => t.style === currentFilter.style);
+    }
+  }
+
+  return templates;
+}
+
+/**
+ * Update the gallery based on filters
+ */
+function updateGallery() {
+  const templates = getFilteredTemplates();
+  renderGallery(templates);
+  updateActiveFilterButtons();
+}
+
+/**
+ * Filter by style
+ */
+function filterByStyle(style) {
+  if (currentFilter.style === style) {
+    // Toggle off if clicking the same style
+    currentFilter.style = null;
+  } else {
+    currentFilter.style = style;
+  }
+  updateGallery();
+}
+
+/**
+ * Reset all filters
+ */
+function resetFilters() {
+  currentFilter = {
+    search: '',
+    style: null
+  };
+  document.getElementById('searchInput').value = '';
+  updateGallery();
+}
+
+/**
+ * Update active state of filter buttons
+ */
+function updateActiveFilterButtons() {
+  document.querySelectorAll('[data-style]').forEach(btn => {
+    const style = btn.dataset.style;
+    if (style === currentFilter.style) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+}
+
+// =====================================================
+// EVENT LISTENERS
+// =====================================================
+
+// Search input with debounce
+let searchTimeout;
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => {
+    currentFilter.search = e.target.value.trim();
+    updateGallery();
+  }, 300);
+});
+
+// Reset button
+document.getElementById('resetBtn').addEventListener('click', resetFilters);
+
+// =====================================================
+// INITIALIZATION
+// =====================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderStyleFilters();
+  renderGallery(getAllTemplates());
+});
+
+// Make filter function available globally
+window.filterByStyle = filterByStyle;
+
+</script>
+
+</body>
+</html>

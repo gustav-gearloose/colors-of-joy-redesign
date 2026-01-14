@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8" />
+<title>Colors of Joy – Floating Editorial Split SPA</title>
+
+<style>
+/* ======================================================
+   DESIGN SYSTEM
+====================================================== */
+:root {
+  --bg-main: #f6f3ed;
+  --bg-soft: #efe9df;
+  --text-dark: #2b2b2b;
+  --text-muted: #6f6a64;
+  --accent: #b88a5a;
+  --radius: 6px;
+}
+
+/* ======================================================
+   BASE
+====================================================== */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: var(--bg-main);
+  color: var(--text-dark);
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 0 0 1rem;
+}
+
+p {
+  max-width: 480px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+button {
+  margin-top: 2rem;
+  padding: 0.8rem 2.4rem;
+  border: 1px solid var(--text-dark);
+  background: transparent;
+  cursor: pointer;
+}
+
+/* ======================================================
+   NAVIGATION
+====================================================== */
+#backNav {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 999;
+}
+
+#backNav a {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: white;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+#backNav a:hover {
+  background: var(--bg-soft);
+  border-color: var(--accent);
+}
+
+#backNav a::before {
+  content: "← ";
+}
+
+#switcher {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 0.4rem;
+}
+
+#switcher select {
+  padding: 0.4rem;
+}
+
+/* ======================================================
+   SHARED STRUCTURE
+====================================================== */
+.template { display: none; }
+.template.active { display: block; }
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 90vh;
+  position: relative;
+}
+
+.hero-text {
+  padding: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-images {
+  position: relative;
+}
+
+/* ======================================================
+   FLOATING IMAGES
+====================================================== */
+.float {
+  position: absolute;
+  width: 340px;
+  height: 460px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 40% 60% 55% 45% / 50% 40% 60% 50%;
+}
+
+/* ======================================================
+   GALLERY
+====================================================== */
+.gallery {
+  padding: 6rem;
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+}
+
+.gallery img {
+  width: 320px;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .hero-text {
+    padding: 3rem;
+  }
+  .hero-images {
+    height: 70vh;
+  }
+  .float {
+    width: 260px;
+    height: 360px;
+  }
+  .gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ======================================================
+     NAVIGATION
+====================================================== -->
+<div id="backNav">
+  <a href="../index.html">Back to Gallery</a>
+</div>
+
+<div id="switcher">
+  <select id="templateSelect">
+    <option value="f1">1 – Calm Overlap</option>
+    <option value="f2">2 – Vertical Flow</option>
+    <option value="f3">3 – Dynamic Offset</option>
+    <option value="f4">4 – Soft Editorial Stack</option>
+    <option value="f5">5 – Bold Asymmetric</option>
+  </select>
+</div>
+
+<!-- ======================================================
+     TEMPLATE 1 – CALM OVERLAP
+====================================================== -->
+<section id="f1" class="template active">
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Farver der bevæger sig</h1>
+      <p>Smykker skabt til at blive båret – og mærket.</p>
+      <button>Shop kollektionen</button>
+    </div>
+    <div class="hero-images">
+      <div class="float" data-img="hero.one" style="top:10%;left:15%"></div>
+      <div class="float" data-img="hero.two" style="top:30%;left:40%"></div>
+    </div>
+  </div>
+
+  <div class="gallery">
+    <img data-img="products.one">
+    <img data-img="products.two">
+    <img data-img="products.three">
+  </div>
+</section>
+
+<!-- ======================================================
+     TEMPLATE 2 – VERTICAL FLOW
+====================================================== -->
+<section id="f2" class="template">
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Et roligt udtryk</h1>
+      <p>Bløde former og naturlig elegance.</p>
+      <button>Se nyheder</button>
+    </div>
+    <div class="hero-images">
+      <div class="float" data-img="hero.one" style="top:5%;left:35%"></div>
+      <div class="float" data-img="hero.two" style="top:45%;left:25%"></div>
+    </div>
+  </div>
+
+  <div class="gallery">
+    <img data-img="products.two">
+    <img data-img="products.three">
+    <img data-img="products.one">
+  </div>
+</section>
+
+<!-- ======================================================
+     TEMPLATE 3 – DYNAMIC OFFSET
+====================================================== -->
+<section id="f3" class="template">
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Legende detaljer</h1>
+      <p>Farver, former og kontraster.</p>
+      <button>Shop favoritter</button>
+    </div>
+    <div class="hero-images">
+      <div class="float" data-img="hero.one" style="top:20%;left:10%"></div>
+      <div class="float" data-img="hero.two" style="top:10%;left:50%"></div>
+    </div>
+  </div>
+
+  <div class="gallery">
+    <img data-img="products.three">
+    <img data-img="products.one">
+    <img data-img="products.two">
+  </div>
+</section>
+
+<!-- ======================================================
+     TEMPLATE 4 – SOFT EDITORIAL STACK
+====================================================== -->
+<section id="f4" class="template">
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Sanselig elegance</h1>
+      <p>Designet til at kunne mikses og matches.</p>
+      <button>Udforsk universet</button>
+    </div>
+    <div class="hero-images">
+      <div class="float" data-img="hero.one" style="top:15%;left:30%"></div>
+      <div class="float" data-img="hero.two" style="top:40%;left:45%"></div>
+    </div>
+  </div>
+
+  <div class="gallery">
+    <img data-img="products.one">
+    <img data-img="products.two">
+    <img data-img="products.three">
+  </div>
+</section>
+
+<!-- ======================================================
+     TEMPLATE 5 – BOLD ASYMMETRIC
+====================================================== -->
+<section id="f5" class="template">
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Et stærkt udtryk</h1>
+      <p>Smykker der tør fylde – uden at overdøve.</p>
+      <button>Shop bestsellers</button>
+    </div>
+    <div class="hero-images">
+      <div class="float" data-img="hero.two" style="top:5%;left:20%"></div>
+      <div class="float" data-img="hero.one" style="top:35%;left:55%"></div>
+    </div>
+  </div>
+
+  <div class="gallery">
+    <img data-img="products.two">
+    <img data-img="products.one">
+    <img data-img="products.three">
+  </div>
+</section>
+
+<!-- ======================================================
+     IMAGE CONFIG + LOGIC
+====================================================== -->
+<script src="../image-pool.js"></script>
+<script>
+// Use shared image pool with curated hero images for floating editorial layouts
+const IMAGES = createImageMapping({
+  hero: {
+    one: "https://colorsofjoy.dk/webshopmedia/Liva%2004.jpeg",
+    two: "https://colorsofjoy.dk/webshopmedia/Always%2089.jpeg"
+  }
+});
+
+document.querySelectorAll("[data-img]").forEach(el => {
+  const path = el.dataset.img.split(".");
+  let ref = IMAGES;
+  path.forEach(k => ref = ref[k]);
+
+  // Use tagName to determine if it's an img element or background element
+  if (el.tagName === 'IMG') {
+    el.src = ref;
+  } else {
+    el.style.backgroundImage = `url(${ref})`;
+  }
+});
+
+document.getElementById("templateSelect").addEventListener("change", e => {
+  document.querySelectorAll(".template").forEach(t => t.classList.remove("active"));
+  document.getElementById(e.target.value).classList.add("active");
+});
+</script>
+
+</body>
+</html>

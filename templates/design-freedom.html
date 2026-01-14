@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8" />
+<title>Colors of Joy – Clean SPA Templates</title>
+
+<style>
+/* ======================================================
+   DESIGN TOKENS
+====================================================== */
+:root {
+  --bg-main: #f5f2ed;
+  --bg-alt: #ede7df;
+  --bg-soft: #f9f7f3;
+
+  --text-dark: #2b2b2b;
+  --text-muted: #6f6a64;
+
+  --accent: #b88a5a;
+  --accent-soft: #d8c3a5;
+
+  --radius: 4px;
+}
+
+/* ======================================================
+   BASE
+====================================================== */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: var(--bg-main);
+  color: var(--text-dark);
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  max-width: 520px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+button {
+  padding: 0.8rem 2.2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--text-dark);
+  background: transparent;
+  cursor: pointer;
+}
+
+button.primary {
+  background: var(--text-dark);
+  color: white;
+  border: none;
+}
+
+small {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* ======================================================
+   NAVIGATION
+====================================================== */
+#backNav {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 999;
+}
+
+#backNav a {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: white;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+#backNav a:hover {
+  background: var(--bg-soft, #efe9df);
+  border-color: var(--accent, #b88a5a);
+}
+
+#backNav a::before {
+  content: "← ";
+}
+
+
+/* ======================================================
+   TEMPLATE SWITCHER
+====================================================== */
+#switcher {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 0.4rem;
+}
+
+#switcher select {
+  padding: 0.4rem;
+}
+
+/* ======================================================
+   SHARED LAYOUT
+====================================================== */
+.template { display: none; }
+.template.active { display: block; }
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  min-height: 90vh;
+}
+
+.hero-image {
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  padding: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section {
+  padding: 6rem;
+}
+
+.section.alt {
+  background: var(--bg-alt);
+}
+
+.grid-2, .grid-3, .grid-4 {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+.grid-2 img,
+.grid-3 img,
+.grid-4 img {
+  width: 100%;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+.card {
+  background: var(--bg-soft);
+  padding: 2rem;
+  border-radius: var(--radius);
+}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .hero-content {
+    padding: 3rem;
+  }
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ======================================================
+     SWITCHER
+====================================================== -->
+
+<!-- ======================================================
+     NAVIGATION
+====================================================== -->
+<div id="backNav">
+  <a href="../index.html">Back to Gallery</a>
+</div>
+
+<div id="switcher">
+  <select id="templateSelect">
+    <option value="t1">Template 1 – Calm Signature</option>
+    <option value="t2">Template 2 – Editorial Shop</option>
+    <option value="t3">Template 3 – Conversion First</option>
+    <option value="t4">Template 4 – Story & Mood</option>
+    <option value="t5">Template 5 – Brand Universe</option>
+  </select>
+</div>
+
+<!-- ======================================================
+     TEMPLATE 1 – CALM SIGNATURE
+====================================================== -->
+<section id="t1" class="template active">
+  <div class="hero">
+    <div class="hero-image" data-img="t1.hero"></div>
+    <div class="hero-content">
+      <small>Colors of Joy</small>
+      <h1>Rolig elegance i farver</h1>
+      <p>Smykker skabt til at blive brugt igen og igen – alene eller i lag.</p>
+      <button class="primary">Shop nyheder</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Populære styles</h2>
+    <div class="grid-3">
+      <img data-img="products.one">
+      <img data-img="products.two">
+      <img data-img="products.three">
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     TEMPLATE 2 – EDITORIAL SHOP
+====================================================== -->
+<section id="t2" class="template">
+  <div class="hero">
+    <div class="hero-image" data-img="t2.hero"></div>
+    <div class="hero-content">
+      <small>Ny kollektion</small>
+      <h1>Legende detaljer</h1>
+      <p>Farver og former der skaber blikfang – uden at larme.</p>
+      <button class="primary">Se kollektionen</button>
+    </div>
+  </div>
+
+  <div class="section alt">
+    <div class="grid-4">
+      <img data-img="products.one">
+      <img data-img="products.two">
+      <img data-img="products.three">
+      <img data-img="products.four">
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     TEMPLATE 3 – CONVERSION FIRST
+====================================================== -->
+<section id="t3" class="template">
+  <div class="hero">
+    <div class="hero-image" data-img="t3.hero"></div>
+    <div class="hero-content">
+      <h1>Designet til hverdagen</h1>
+      <p>Perfekt pasform. Nem styling. Hurtig levering.</p>
+      <button class="primary">Shop bestsellers</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="grid-4">
+      <div class="card">
+        <h3>Fri fragt</h3>
+        <p>Ved køb over 499 kr.</p>
+      </div>
+      <div class="card">
+        <h3>30 dages retur</h3>
+        <p>Nem og hurtig returnering.</p>
+      </div>
+      <div class="card">
+        <h3>Håndlavet</h3>
+        <p>Små serier med omtanke.</p>
+      </div>
+      <div class="card">
+        <h3>Nem betaling</h3>
+        <p>MobilePay & kort.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     TEMPLATE 4 – STORY & MOOD
+====================================================== -->
+<section id="t4" class="template">
+  <div class="hero">
+    <div class="hero-image" data-img="t4.hero"></div>
+    <div class="hero-content">
+      <h1>Et univers af glæde</h1>
+      <p>Colors of Joy er skabt med kærlighed til materialer, farver og det personlige udtryk.</p>
+    </div>
+  </div>
+
+  <div class="section alt grid-2">
+    <div>
+      <h2>Vores tilgang</h2>
+      <p>
+        Smykkerne er designet til at kunne bruges på mange måder – og blive en del af din hverdag.
+      </p>
+      <button>Læs mere</button>
+    </div>
+    <img data-img="products.two">
+  </div>
+</section>
+
+<!-- ======================================================
+     TEMPLATE 5 – BRAND UNIVERSE
+====================================================== -->
+<section id="t5" class="template">
+  <div class="hero">
+    <div class="hero-image" data-img="t5.hero"></div>
+    <div class="hero-content">
+      <small>A Piece of Joy</small>
+      <h1>Mere end smykker</h1>
+      <p>Et univers bygget på farver, håndværk og glæde.</p>
+      <button class="primary">Udforsk universet</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Udvalgte favoritter</h2>
+    <div class="grid-3">
+      <img data-img="products.one">
+      <img data-img="products.two">
+      <img data-img="products.three">
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     IMAGE CONFIG + LOGIC
+====================================================== -->
+<script src="../image-pool.js"></script>
+<script>
+// Use shared image pool with curated hero images for clean layouts
+const IMAGES = createImageMapping({
+  t1: {
+    hero: "https://colorsofjoy.dk/webshopmedia/Always%2088.jpeg"
+  },
+  t2: {
+    hero: "https://colorsofjoy.dk/webshopmedia/Sofia%2005.jpeg"
+  },
+  t3: {
+    hero: "https://colorsofjoy.dk/webshopmedia/Tigerlilly%2005.jpeg"
+  },
+  t4: {
+    hero: "https://colorsofjoy.dk/webshopmedia/Liva%2003.jpeg"
+  },
+  t5: {
+    hero: "https://colorsofjoy.dk/webshopmedia/Always%2092.jpeg"
+  }
+});
+
+document.querySelectorAll("[data-img]").forEach(el => {
+  const path = el.dataset.img.split(".");
+  let ref = IMAGES;
+  path.forEach(k => ref = ref[k]);
+
+  // Use tagName to determine if it's an img element or background element
+  if (el.tagName === 'IMG') {
+    el.src = ref;
+  } else {
+    el.style.backgroundImage = `url(${ref})`;
+  }
+});
+
+document.getElementById("templateSelect").addEventListener("change", e => {
+  document.querySelectorAll(".template").forEach(t => t.classList.remove("active"));
+  document.getElementById(e.target.value).classList.add("active");
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8" />
+<title>Colors of Joy – Color Exploration SPA</title>
+
+<style>
+/* ======================================================
+   GLOBAL TOKENS
+====================================================== */
+
+:root {
+  --text-dark: #2b2b2b;
+  --text-light: #ffffff;
+
+  --rose: #d8a7b1;
+  --sand: #f2ede4;
+  --mint: #cfe3dc;
+  --sun: #f4c95d;
+  --sky: #c7d9ee;
+  --clay: #c98c70;
+  --ink: #1f1f1f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  color: var(--text-dark);
+  background: var(--sand);
+}
+
+/* ======================================================
+   NAVIGATION
+====================================================== */
+#backNav {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 999;
+}
+
+#backNav a {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: white;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+#backNav a:hover {
+  background: var(--bg-soft, #efe9df);
+  border-color: var(--accent, #b88a5a);
+}
+
+#backNav a::before {
+  content: "← ";
+}
+
+
+/* ======================================================
+   TEMPLATE SWITCHER
+====================================================== */
+
+#switcher {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 0.4rem;
+}
+
+#switcher select {
+  padding: 0.4rem;
+}
+
+/* ======================================================
+   SHARED STRUCTURE
+====================================================== */
+
+.template { display: none; }
+.template.active { display: block; }
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 85vh;
+}
+
+.hero-image {
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  max-width: 460px;
+  line-height: 1.7;
+}
+
+button {
+  margin-top: 2rem;
+  padding: 0.7rem 2rem;
+  border: 1px solid currentColor;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* ======================================================
+   SECTIONS
+====================================================== */
+
+.section {
+  padding: 5rem;
+}
+
+.section.alt {
+  background: var(--sand);
+}
+
+.grid-4, .grid-3 {
+  display: grid;
+  gap: 2rem;
+}
+
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+.grid-4 img,
+.grid-3 img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.3rem 0.6rem;
+  background: var(--ink);
+  color: white;
+  margin-bottom: 1rem;
+}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .grid-4 { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ======================================================
+     SWITCHER
+====================================================== -->
+
+<!-- ======================================================
+     NAVIGATION
+====================================================== -->
+<div id="backNav">
+  <a href="../index.html">Back to Gallery</a>
+</div>
+
+<div id="switcher">
+  <select id="templateSelect">
+    <option value="t1">Template 1 – Soft Rose Calm</option>
+    <option value="t2">Template 2 – Playful Color Pop</option>
+    <option value="t3">Template 3 – Confident Contrast</option>
+    <option value="t4">Template 4 – Editorial Mood</option>
+    <option value="t5">Template 5 – Brand Universe</option>
+  </select>
+</div>
+
+<!-- ======================================================
+     TEMPLATE 1 – SOFT ROSE CALM
+====================================================== -->
+<section id="t1" class="template active" style="background:var(--rose)">
+  <div class="hero">
+    <div class="hero-image" data-img="t1.hero"></div>
+    <div class="hero-content">
+      <h1>Colors of Joy</h1>
+      <p>Rolig elegance i farver, der føles naturlige og feminine.</p>
+      <button>Shop kollektionen</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Nyheder</h2>
+    <div class="grid-3">
+      <img data-img="products.one">
+      <img data-img="products.two">
+      <img data-img="products.three">
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     TEMPLATE 2 – PLAYFUL COLOR POP
+====================================================== -->
+<section id="t2" class="template" style="background:var(--sun)">
+  <div class="hero">
+    <div class="hero-image" data-img="t2.hero"></div>
+    <div class="hero-content">
+      <span class="badge">Ny kollektion</span>
+      <h1>Farver med personlighed</h1>
+      <p>Smykker der giver energi, glæde og mod.</p>
+      <button>Se nyheder</button>
+    </div>
+  </div>
+
+  <div class="section alt">
+    <div class="grid-4">
+      <img data-img="products.one">
+      <img data-img="products.two">
+      <img data-img="products.three">
+      <img data-img="products.four">
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     TEMPLATE 3 – CONFIDENT CONTRAST
+====================================================== -->
+<section id="t3" class="template" style="background:var(--sky)">
+  <div class="hero">
+    <div class="hero-image" data-img="t3.hero"></div>
+    <div class="hero-content">
+      <h1>Designet til at blive brugt</h1>
+      <p>Stærke former. Klare valg. Nem styling.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Populære styles</h2>
+    <div class="grid-4">
+      <img data-img="products.one">
+      <img data-img="products.two">
+      <img data-img="products.three">
+      <img data-img="products.four">
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     TEMPLATE 4 – EDITORIAL MOOD
+====================================================== -->
+<section id="t4" class="template" style="background:var(--mint)">
+  <div class="hero">
+    <div class="hero-image" data-img="t4.hero"></div>
+    <div class="hero-content">
+      <h1>Et univers af farver</h1>
+      <p>Historier fortalt gennem materialer og detaljer.</p>
+    </div>
+  </div>
+
+  <div class="section alt">
+    <h2>Vores tilgang</h2>
+    <p>
+      Colors of Joy er skabt ud fra en kærlighed til det legende,
+      det personlige og det uperfekte smukke.
+    </p>
+  </div>
+</section>
+
+<!-- ======================================================
+     TEMPLATE 5 – BRAND UNIVERSE
+====================================================== -->
+<section id="t5" class="template" style="background:var(--clay)">
+  <div class="hero">
+    <div class="hero-image" data-img="t5.hero"></div>
+    <div class="hero-content">
+      <h1>A Piece of Joy</h1>
+      <p>Smykker der bliver en del af din hverdag og dine minder.</p>
+      <button>Udforsk universet</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Favoritter</h2>
+    <div class="grid-3">
+      <img data-img="products.one">
+      <img data-img="products.two">
+      <img data-img="products.three">
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     IMAGE CONFIG + LOGIC
+====================================================== -->
+<script src="../image-pool.js"></script>
+<script>
+// Use shared image pool with curated hero images for color-driven layouts
+const IMAGES = createImageMapping({
+  t1: {
+    hero: "https://colorsofjoy.dk/webshopmedia/Liva%2005.jpeg"
+  },
+  t2: {
+    hero: "https://colorsofjoy.dk/webshopmedia/Tigerlilly%2002.jpeg"
+  },
+  t3: {
+    hero: "https://colorsofjoy.dk/webshopmedia/Always%2091.jpeg"
+  },
+  t4: {
+    hero: "https://colorsofjoy.dk/webshopmedia/Zoe%CC%81%2002.jpeg"
+  },
+  t5: {
+    hero: "https://colorsofjoy.dk/webshopmedia/Tigerlilly%2008.jpeg"
+  }
+});
+
+document.querySelectorAll("[data-img]").forEach(el => {
+  const path = el.dataset.img.split(".");
+  let ref = IMAGES;
+  path.forEach(k => ref = ref[k]);
+
+  // Use tagName to determine if it's an img element or background element
+  if (el.tagName === 'IMG') {
+    el.src = ref;
+  } else {
+    el.style.backgroundImage = `url(${ref})`;
+  }
+});
+
+document.getElementById("templateSelect").addEventListener("change", e => {
+  document.querySelectorAll(".template").forEach(t => t.classList.remove("active"));
+  document.getElementById(e.target.value).classList.add("active");
+});
+</script>
+
+</body>
+</html>

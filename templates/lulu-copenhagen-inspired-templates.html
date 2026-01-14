@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8" />
+<title>Colors of Joy – LU LU Inspired SPA</title>
+
+<style>
+/* =====================
+   GLOBAL
+===================== */
+
+:root {
+  --bg-main: #f6f3ed;
+  --bg-soft: #efe9df;
+  --text-dark: #2b2b2b;
+  --accent: #b88a5a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: var(--bg-main);
+  color: var(--text-dark);
+}
+
+/* =====================
+   TEMPLATE SWITCHER
+===================== */
+
+#switcher {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
+  background: white;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+}
+
+#switcher select {
+  padding: 0.4rem;
+}
+
+/* =====================
+   SHARED SECTIONS
+===================== */
+
+.template { display: none; }
+
+.template.active { display: block; }
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 85vh;
+}
+
+.hero-image {
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  max-width: 460px;
+  line-height: 1.7;
+}
+
+button {
+  margin-top: 2rem;
+  padding: 0.7rem 2rem;
+  background: transparent;
+  border: 1px solid var(--text-dark);
+  cursor: pointer;
+}
+
+/* =====================
+   CATEGORY STRIP (LU LU)
+===================== */
+
+.categories {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem 4rem;
+  overflow-x: auto;
+}
+
+.category {
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.category img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* =====================
+   PRODUCT GRIDS
+===================== */
+
+.grid-4, .grid-3, .grid-2 {
+  display: grid;
+  gap: 2rem;
+  padding: 4rem;
+}
+
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+.grid-4 img,
+.grid-3 img,
+.grid-2 img {
+  width: 100%;
+  object-fit: cover;
+}
+
+/* =====================
+   STORY SECTION
+===================== */
+
+.story {
+  padding: 6rem;
+  background: var(--bg-soft);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.story img {
+  width: 100%;
+  object-fit: cover;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+
+@media (max-width: 900px) {
+  .hero, .story {
+    grid-template-columns: 1fr;
+  }
+  .grid-4 { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================
+     TEMPLATE SWITCHER
+===================== -->
+
+<!-- ======================================================
+     NAVIGATION
+====================================================== -->
+<div id="backNav">
+  <a href="../index.html">Back to Gallery</a>
+</div>
+
+<div id="switcher">
+  <select id="templateSelect">
+    <option value="t1">1 – Calm Categories</option>
+    <option value="t2">2 – Energetic Editorial Shop</option>
+    <option value="t3">3 – Confident Product Focus</option>
+    <option value="t4">4 – Editorial Storytelling</option>
+    <option value="t5">5 – Brand Universe</option>
+  </select>
+</div>
+
+<!-- =====================
+     TEMPLATE 1 – CALM CATEGORIES
+===================== -->
+<section id="t1" class="template active">
+  <div class="hero">
+    <div class="hero-image" data-img="t1.hero"></div>
+    <div class="hero-content">
+      <h1>Colors of Joy</h1>
+      <p>Håndlavede smykker i farver – skabt til at blive brugt og elsket.</p>
+      <button>Shop nyheder</button>
+    </div>
+  </div>
+
+  <div class="categories">
+    <div class="category"><img data-img="categories.earrings"><div>Øreringe</div></div>
+    <div class="category"><img data-img="categories.necklaces"><div>Halskæder</div></div>
+    <div class="category"><img data-img="categories.bracelets"><div>Armbånd</div></div>
+    <div class="category"><img data-img="categories.favorites"><div>Favoritter</div></div>
+  </div>
+
+  <div class="grid-3">
+    <img data-img="products.one">
+    <img data-img="products.two">
+    <img data-img="products.three">
+  </div>
+</section>
+
+<!-- =====================
+     TEMPLATE 2 – ENERGETIC EDITORIAL SHOP
+===================== -->
+<section id="t2" class="template">
+  <div class="hero">
+    <div class="hero-image" data-img="t2.hero"></div>
+    <div class="hero-content">
+      <h1>Nyheder</h1>
+      <p>Friske farver og legende detaljer.</p>
+      <button>Se kollektionen</button>
+    </div>
+  </div>
+
+  <div class="grid-4">
+    <img data-img="products.one">
+    <img data-img="products.two">
+    <img data-img="products.three">
+    <img data-img="products.four">
+  </div>
+</section>
+
+<!-- =====================
+     TEMPLATE 3 – PRODUCT FOCUS
+===================== -->
+<section id="t3" class="template">
+  <div class="hero">
+    <div class="hero-image" data-img="t3.hero"></div>
+    <div class="hero-content">
+      <h1>Designet til hverdagen</h1>
+      <p>Perfekt alene – endnu bedre i kombination.</p>
+    </div>
+  </div>
+
+  <div class="grid-4">
+    <img data-img="products.one">
+    <img data-img="products.two">
+    <img data-img="products.three">
+    <img data-img="products.four">
+  </div>
+</section>
+
+<!-- =====================
+     TEMPLATE 4 – EDITORIAL STORY
+===================== -->
+<section id="t4" class="template">
+  <div class="hero">
+    <div class="hero-image" data-img="t4.hero"></div>
+    <div class="hero-content">
+      <h1>Farver der fortæller</h1>
+      <p>Smykker skabt med glæde, håndværk og personlighed.</p>
+    </div>
+  </div>
+
+  <div class="story">
+    <img data-img="story.one">
+    <div>
+      <h2>Vores univers</h2>
+      <p>Colors of Joy er et univers af farver, teksturer og former – designet til kvinder, der tør udtrykke sig.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =====================
+     TEMPLATE 5 – BRAND UNIVERSE
+===================== -->
+<section id="t5" class="template">
+  <div class="hero">
+    <div class="hero-image" data-img="t5.hero"></div>
+    <div class="hero-content">
+      <h1>A Piece of Joy</h1>
+      <p>Smykker der bliver en del af din historie.</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <img data-img="story.one">
+    <img data-img="story.two">
+  </div>
+</section>
+
+<!-- =====================
+     IMAGE CONFIG + LOGIC
+===================== -->
+<script src="../image-pool.js"></script>
+<script>
+// Use shared image pool with curated hero images for premium aesthetic
+const IMAGES = createImageMapping({
+  t1: {
+    hero: "https://colorsofjoy.dk/webshopmedia/Always%2087.jpeg"
+  },
+  t2: {
+    hero: "https://colorsofjoy.dk/webshopmedia/Tigerlilly%2001.jpeg"
+  },
+  t3: {
+    hero: "https://colorsofjoy.dk/webshopmedia/Lilly%2010.jpeg"
+  },
+  t4: {
+    hero: "https://colorsofjoy.dk/webshopmedia/SEA%2010.jpeg"
+  },
+  t5: {
+    hero: "https://colorsofjoy.dk/webshopmedia/Sofia%2001.jpeg"
+  },
+  story: {
+    one: "https://colorsofjoy.dk/webshopmedia/Zoe%CC%81%2001.jpeg",
+    two: "https://colorsofjoy.dk/webshopmedia/Tigerlilly%2009.jpeg"
+  },
+  categories: {
+    earrings: "https://impro.usercontent.one/appid/oneComWsb/domain/colorsofjoy.dk/media/colorsofjoy.dk/onewebmedia/Hjemmeside%2025%201%20af%204.jpeg",
+    necklaces: "https://impro.usercontent.one/appid/oneComWsb/domain/colorsofjoy.dk/media/colorsofjoy.dk/onewebmedia/Hjemmeside%2025%203%20af%204.jpeg",
+    bracelets: "https://impro.usercontent.one/appid/oneComWsb/domain/colorsofjoy.dk/media/colorsofjoy.dk/onewebmedia/Hjemmeside%2025%201%20af%204.jpeg",
+    favorites: "https://impro.usercontent.one/appid/oneComWsb/domain/colorsofjoy.dk/media/colorsofjoy.dk/onewebmedia/Hjemmeside%2025%203%20af%204.jpeg"
+  }
+});
+
+document.querySelectorAll("[data-img]").forEach(el => {
+  const path = el.dataset.img.split(".");
+  let ref = IMAGES;
+  path.forEach(k => ref = ref[k]);
+
+  // Use tagName to determine if it's an img element or background element
+  if (el.tagName === 'IMG') {
+    el.src = ref;
+  } else {
+    el.style.backgroundImage = `url(${ref})`;
+  }
+});
+
+document.getElementById("templateSelect").addEventListener("change", e => {
+  document.querySelectorAll(".template").forEach(t => t.classList.remove("active"));
+  document.getElementById(e.target.value).classList.add("active");
+});
+</script>
+
+</body>
+</html>

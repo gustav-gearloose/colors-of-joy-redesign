@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8" />
+<title>Colors of Joy – Architecture SPA</title>
+
+<style>
+/* ======================================================
+   DESIGN SYSTEM
+====================================================== */
+:root {
+  --bg-main: #f5f2ed;
+  --bg-soft: #ede7df;
+  --bg-ink: #1f1f1f;
+
+  --text-dark: #2b2b2b;
+  --text-muted: #6f6a64;
+  --text-light: #ffffff;
+
+  --accent: #b88a5a;
+  --radius: 6px;
+}
+
+/* ======================================================
+   BASE
+====================================================== */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: var(--bg-main);
+  color: var(--text-dark);
+}
+
+h1 { font-size: 3rem; margin: 0 0 1rem; }
+h2 { font-size: 2rem; margin: 0 0 1rem; }
+h3 { font-size: 1.2rem; margin: 0 0 0.5rem; }
+
+p {
+  max-width: 560px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+button {
+  padding: 0.8rem 2.4rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--text-dark);
+  background: transparent;
+  cursor: pointer;
+}
+
+button.primary {
+  background: var(--text-dark);
+  color: var(--text-light);
+  border: none;
+}
+
+small {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+}
+
+/* ======================================================
+   NAVIGATION
+====================================================== */
+#backNav {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 999;
+}
+
+#backNav a {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: white;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+#backNav a:hover {
+  background: var(--bg-soft);
+  border-color: var(--accent);
+}
+
+#backNav a::before {
+  content: "← ";
+}
+
+#switcher {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
+  background: white;
+  padding: 0.4rem;
+  border: 1px solid #ddd;
+}
+
+#switcher select {
+  padding: 0.4rem;
+}
+
+/* ======================================================
+   SHARED UTILITIES
+====================================================== */
+.template { display: none; }
+.template.active { display: block; }
+
+.full-image {
+  width: 100%;
+  height: 90vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.section {
+  padding: 6rem;
+}
+
+.section.center {
+  text-align: center;
+}
+
+.grid-2, .grid-3, .grid-4 {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+.grid-2 img,
+.grid-3 img,
+.grid-4 img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+@media (max-width: 900px) {
+  .section { padding: 3rem; }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ======================================================
+     NAVIGATION
+====================================================== -->
+<div id="backNav">
+  <a href="../index.html">Back to Gallery</a>
+</div>
+
+<div id="switcher">
+  <select id="templateSelect">
+    <option value="t1">1 – Editorial Entry</option>
+    <option value="t2">2 – Category Driven Shop</option>
+    <option value="t3">3 – Product First</option>
+    <option value="t4">4 – Modular Blocks</option>
+    <option value="t5">5 – Brand Universe</option>
+  </select>
+</div>
+
+<!-- ======================================================
+     TEMPLATE 1 – EDITORIAL ENTRY
+====================================================== -->
+<section id="t1" class="template active">
+  <div class="full-image" data-img="t1.hero"></div>
+
+  <div class="section center">
+    <small>Colors of Joy</small>
+    <h1>Farver med følelse</h1>
+    <p>Smykker skabt til at fortælle din historie – stille, personligt og smukt.</p>
+  </div>
+
+  <div class="section grid-2">
+    <img data-img="products.one">
+    <div>
+      <h2>En rolig tilgang</h2>
+      <p>Designet til at blive brugt igen og igen, alene eller i kombination.</p>
+      <button class="primary">Shop historien</button>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     TEMPLATE 2 – CATEGORY DRIVEN SHOP
+====================================================== -->
+<section id="t2" class="template">
+  <div class="section center">
+    <h1>Shop efter kategori</h1>
+    <p>Find det, der passer til dig – hurtigt og visuelt.</p>
+  </div>
+
+  <div class="section grid-4">
+    <img data-img="products.one">
+    <img data-img="products.two">
+    <img data-img="products.three">
+    <img data-img="products.four">
+  </div>
+
+  <div class="section center">
+    <button class="primary">Se alle produkter</button>
+  </div>
+</section>
+
+<!-- ======================================================
+     TEMPLATE 3 – PRODUCT FIRST
+====================================================== -->
+<section id="t3" class="template">
+  <div class="section center">
+    <h1>Bestsellers</h1>
+    <p>Vores mest populære styles – klar til levering.</p>
+  </div>
+
+  <div class="section grid-4">
+    <img data-img="products.one">
+    <img data-img="products.two">
+    <img data-img="products.three">
+    <img data-img="products.four">
+  </div>
+
+  <div class="section grid-4">
+    <div>
+      <h3>Fri fragt</h3>
+      <p>Ved køb over 499 kr.</p>
+    </div>
+    <div>
+      <h3>30 dages retur</h3>
+      <p>Nem og fleksibel.</p>
+    </div>
+    <div>
+      <h3>Håndlavet</h3>
+      <p>Små serier.</p>
+    </div>
+    <div>
+      <h3>Nem betaling</h3>
+      <p>MobilePay & kort.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     TEMPLATE 4 – MODULAR BLOCKS
+====================================================== -->
+<section id="t4" class="template">
+  <div class="section">
+    <h1>Design uden regler</h1>
+    <p>Hvert smykke er skabt til at leve sit eget liv.</p>
+  </div>
+
+  <div class="section grid-2">
+    <img data-img="products.two">
+    <img data-img="products.three">
+  </div>
+
+  <div class="section">
+    <h2>Skabt med omtanke</h2>
+    <p>Materialer, former og farver udvalgt med kærlighed.</p>
+  </div>
+
+  <div class="section grid-3">
+    <img data-img="products.one">
+    <img data-img="products.two">
+    <img data-img="products.three">
+  </div>
+</section>
+
+<!-- ======================================================
+     TEMPLATE 5 – BRAND UNIVERSE
+====================================================== -->
+<section id="t5" class="template">
+  <div class="section center" style="background:var(--bg-ink);color:white">
+    <h1>A Piece of Joy</h1>
+    <p style="color:#ddd">Et univers bygget på glæde, farver og håndværk.</p>
+  </div>
+
+  <div class="section grid-2">
+    <div>
+      <h2>Vores filosofi</h2>
+      <p>Smykker skal være personlige, legende og lette at bruge.</p>
+      <button class="primary">Læs mere</button>
+    </div>
+    <img data-img="t5.hero">
+  </div>
+
+  <div class="section grid-3">
+    <img data-img="products.one">
+    <img data-img="products.two">
+    <img data-img="products.three">
+  </div>
+</section>
+
+<!-- ======================================================
+     IMAGE CONFIG + LOGIC
+====================================================== -->
+<script src="../image-pool.js"></script>
+<script>
+// Use shared image pool with curated hero images for architectural layouts
+const IMAGES = createImageMapping({
+  t1: {
+    hero: "https://colorsofjoy.dk/webshopmedia/Sofia%2003.jpeg"
+  },
+  t2: {
+    hero: "https://colorsofjoy.dk/webshopmedia/Tigerlilly%2004.jpeg"
+  },
+  t3: {
+    hero: "https://colorsofjoy.dk/webshopmedia/Always%2090.jpeg"
+  },
+  t4: {
+    hero: "https://colorsofjoy.dk/webshopmedia/Liva%2002.jpeg"
+  },
+  t5: {
+    hero: "https://colorsofjoy.dk/webshopmedia/SEA%2011.jpeg"
+  }
+});
+
+document.querySelectorAll("[data-img]").forEach(el => {
+  const path = el.dataset.img.split(".");
+  let ref = IMAGES;
+  path.forEach(k => ref = ref[k]);
+
+  // Use tagName to determine if it's an img element or background element
+  if (el.tagName === 'IMG') {
+    el.src = ref;
+  } else {
+    el.style.backgroundImage = `url(${ref})`;
+  }
+});
+
+document.getElementById("templateSelect").addEventListener("change", e => {
+  document.querySelectorAll(".template").forEach(t => t.classList.remove("active"));
+  document.getElementById(e.target.value).classList.add("active");
+});
+</script>
+
+</body>
+</html>

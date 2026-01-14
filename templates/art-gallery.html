@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Colors of Joy – Art Gallery</title>
+
+  <style>
+    /* ===============================
+       Design System
+    =============================== */
+    :root {
+      --cream: #F7F2E8;
+      --sand: #E9E1D3;
+      --clay: #C57A63;
+      --ink: #3B3735;
+      --soft-gray: #8E8A86;
+
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    /* ===============================
+       Base Styles
+    =============================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--serif);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    p {
+      max-width: 42ch;
+      color: var(--soft-gray);
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: var(--ink);
+      border-bottom: 1px solid var(--ink);
+    }
+
+    /* ===============================
+       Navigation
+    =============================== */
+    #backNav {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1000;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+    }
+
+    #templateSelect {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1000;
+      padding: 0.4em;
+      font-family: var(--sans);
+    }
+
+    /* ===============================
+       Template Wrapper
+    =============================== */
+    .template {
+      display: none;
+    }
+
+    .template.active {
+      display: block;
+    }
+
+    section.block {
+      padding: 4rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding-top: 6rem;
+    }
+
+    .hero-image {
+      margin-top: 3rem;
+      border-radius: 1.2rem;
+      overflow: hidden;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .frame {
+      background: white;
+      padding: 1rem;
+      border-radius: 0.8rem;
+    }
+
+    .label {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--soft-gray);
+      margin-top: 0.6rem;
+    }
+
+    /* ===============================
+       Responsive
+    =============================== */
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 3rem;
+      }
+
+      section.block {
+        padding: 6rem 3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <div id="backNav">
+    <a href="../index.html">← Back to Gallery</a>
+  </div>
+
+  <select id="templateSelect">
+    <option value="t1">Variation 1</option>
+    <option value="t2">Variation 2</option>
+    <option value="t3">Variation 3</option>
+    <option value="t4">Variation 4</option>
+    <option value="t5">Variation 5</option>
+  </select>
+
+  <!-- TEMPLATE 1 -->
+  <section id="t1" class="template active">
+    <section class="block hero">
+      <h1>Et univers af glæde</h1>
+      <p>Colors of Joy er et legende smykeunivers fyldt med varme, farver og personlighed.</p>
+      <a class="cta">Shop kollektionen</a>
+
+      <div class="hero-image">
+        <img data-img="hero.one">
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Udvalgte smykker</h2>
+      <div class="gallery">
+        <div class="frame">
+          <img data-img="products.one">
+          <div class="label">Håndlavet halskæde</div>
+        </div>
+        <div class="frame">
+          <img data-img="products.two">
+          <div class="label">Farverige øreringe</div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- TEMPLATE 2 -->
+  <section id="t2" class="template">
+    <section class="block hero">
+      <h1>Smykker med omtanke</h1>
+      <p>Alle designs skabes i små serier med fokus på kvalitet og glæde.</p>
+      <a class="cta">Se nyheder</a>
+
+      <div class="hero-image">
+        <img data-img="hero.two">
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Kollektioner</h2>
+      <div class="gallery">
+        <div class="frame"><img data-img="products.three"></div>
+        <div class="frame"><img data-img="products.four"></div>
+      </div>
+    </section>
+  </section>
+
+  <!-- TEMPLATE 3 -->
+  <section id="t3" class="template">
+    <section class="block hero">
+      <h1>Find din personlige stil</h1>
+      <p>Smykkerne er skabt til at kunne mixes og bæres på din måde.</p>
+      <a class="cta">Udforsk universet</a>
+
+      <div class="hero-image">
+        <img data-img="hero.three">
+      </div>
+    </section>
+  </section>
+
+  <!-- TEMPLATE 4 -->
+  <section id="t4" class="template">
+    <section class="block hero">
+      <h1>Håndlavet i små serier</h1>
+      <p>Langsom produktion og ægte materialer gør hvert smykke unikt.</p>
+      <a class="cta">Læs mere</a>
+
+      <div class="hero-image">
+        <img data-img="hero.four">
+      </div>
+    </section>
+  </section>
+
+  <!-- TEMPLATE 5 -->
+  <section id="t5" class="template">
+    <section class="block hero">
+      <h1>Smykker der føles personlige</h1>
+      <p>Designet til at bringe glæde – hver dag.</p>
+      <a class="cta">Shop nu</a>
+
+      <div class="hero-image">
+        <img data-img="hero.five">
+      </div>
+    </section>
+  </section>
+
+  <!-- Scripts -->
+  <script src="../image-pool.js"></script>
+  <script>
+    const select = document.getElementById('templateSelect');
+    const templates = document.querySelectorAll('.template');
+
+    select.addEventListener('change', () => {
+      templates.forEach(t => t.classList.remove('active'));
+      document.getElementById(select.value).classList.add('active');
+    });
+  </script>
+
+</body>
+</html>

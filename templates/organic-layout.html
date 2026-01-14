@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8" />
+<title>Colors of Joy – Organic Image Exploration</title>
+
+<style>
+/* ======================================================
+   BASE
+====================================================== */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: #f6f3ed;
+  color: #2b2b2b;
+}
+
+h1 { font-size: 3rem; margin-bottom: 1rem; }
+h2 { font-size: 2rem; margin-bottom: 1rem; }
+
+p {
+  max-width: 520px;
+  line-height: 1.7;
+  color: #6f6a64;
+}
+
+button {
+  padding: 0.8rem 2.2rem;
+  border: 1px solid #2b2b2b;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* ======================================================
+   NAVIGATION
+====================================================== */
+#backNav {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 999;
+}
+
+#backNav a {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: white;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+#backNav a:hover {
+  background: var(--bg-soft, #efe9df);
+  border-color: var(--accent, #b88a5a);
+}
+
+#backNav a::before {
+  content: "← ";
+}
+
+
+/* ======================================================
+   SWITCHER
+====================================================== */
+#switcher {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 0.4rem;
+  z-index: 999;
+}
+
+#switcher select {
+  padding: 0.4rem;
+}
+
+/* ======================================================
+   UTILITIES
+====================================================== */
+.template { display: none; }
+.template.active { display: block; }
+
+.section {
+  padding: 6rem;
+  position: relative;
+}
+
+.center {
+  text-align: center;
+}
+
+/* ======================================================
+   ORGANIC IMAGE SHAPES
+====================================================== */
+
+/* Blob via clip-path */
+.blob {
+  width: 420px;
+  height: 520px;
+  background-size: cover;
+  background-position: center;
+  clip-path: path(
+    "M 60 20 
+     C 120 -20, 300 20, 360 100
+     C 420 180, 360 360, 240 420
+     C 120 480, 0 380, 20 240
+     C 40 120, 20 60, 60 20 Z"
+  );
+}
+
+/* Organic wave mask */
+.wave {
+  width: 100%;
+  height: 70vh;
+  background-size: cover;
+  background-position: center;
+  clip-path: polygon(
+    0 0, 100% 0, 100% 80%, 
+    80% 90%, 60% 85%, 
+    40% 92%, 20% 88%, 
+    0 100%
+  );
+}
+
+/* Floating images */
+.float-container {
+  position: relative;
+  height: 80vh;
+}
+
+.float-img {
+  position: absolute;
+  width: 320px;
+  height: 420px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 30% 70% 60% 40% / 40% 30% 70% 60%;
+}
+
+/* Soft background SVG */
+.svg-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+@media (max-width: 900px) {
+  .section { padding: 3rem; }
+  .blob, .float-img { width: 280px; height: 360px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ======================================================
+     SWITCHER
+====================================================== -->
+
+<!-- ======================================================
+     NAVIGATION
+====================================================== -->
+<div id="backNav">
+  <a href="../index.html">Back to Gallery</a>
+</div>
+
+<div id="switcher">
+  <select id="templateSelect">
+    <option value="o1">1 – Organic Hero Blob</option>
+    <option value="o2">2 – Flowing Image Wave</option>
+    <option value="o3">3 – Floating Editorial Images</option>
+    <option value="o4">4 – SVG Shape Background</option>
+    <option value="o5">5 – Asymmetric Story Stack</option>
+  </select>
+</div>
+
+<!-- ======================================================
+     TEMPLATE 1 – ORGANIC HERO BLOB
+====================================================== -->
+<section id="o1" class="template active">
+  <div class="section" style="display:flex;gap:5rem;align-items:center">
+    <div class="blob" data-img="hero.one"></div>
+    <div>
+      <h1>Farver i bevægelse</h1>
+      <p>Smykker der føles levende – ikke perfekte, men personlige.</p>
+      <button>Shop kollektionen</button>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     TEMPLATE 2 – FLOWING IMAGE WAVE
+====================================================== -->
+<section id="o2" class="template">
+  <div class="wave" data-img="hero.two"></div>
+  <div class="section center">
+    <h1>Bløde former</h1>
+    <p>Et mere sanseligt udtryk, hvor billederne flyder.</p>
+    <button>Se nyheder</button>
+  </div>
+</section>
+
+<!-- ======================================================
+     TEMPLATE 3 – FLOATING EDITORIAL IMAGES
+====================================================== -->
+<section id="o3" class="template">
+  <div class="float-container">
+    <div class="float-img" data-img="products.one" style="top:10%;left:15%"></div>
+    <div class="float-img" data-img="products.two" style="top:35%;left:45%"></div>
+    <div class="float-img" data-img="products.three" style="top:20%;left:70%"></div>
+  </div>
+  <div class="section center">
+    <h1>Et levende layout</h1>
+    <p>Billederne skaber rytme – ikke rækker.</p>
+  </div>
+</section>
+
+<!-- ======================================================
+     TEMPLATE 4 – SVG SHAPE BACKGROUND
+====================================================== -->
+<section id="o4" class="template">
+  <div class="section">
+    <svg class="svg-bg" viewBox="0 0 1440 600" preserveAspectRatio="none">
+      <path d="M0,200 C200,100 400,300 600,250 800,200 1000,300 1200,200 1400,100 1440,150 1440,150 L1440,0 L0,0 Z"
+            fill="#e7dccc"/>
+    </svg>
+
+    <h1>Rolig elegance</h1>
+    <p>Organiske former giver plads til både ro og personlighed.</p>
+    <div class="blob" data-img="products.one"></div>
+  </div>
+</section>
+
+<!-- ======================================================
+     TEMPLATE 5 – ASYMMETRIC STORY STACK
+====================================================== -->
+<section id="o5" class="template">
+  <div class="section" style="display:grid;grid-template-columns:1fr 1.4fr;gap:4rem">
+    <div>
+      <h1>Historier i lag</h1>
+      <p>Asymmetri skaber spænding og bevægelse.</p>
+      <button>Udforsk universet</button>
+    </div>
+    <div class="blob" data-img="products.two"></div>
+  </div>
+
+  <div class="section" style="display:flex;justify-content:flex-end">
+    <div class="blob" data-img="products.three"></div>
+  </div>
+</section>
+
+<!-- ======================================================
+     IMAGE CONFIG + LOGIC
+====================================================== -->
+<script src="../image-pool.js"></script>
+<script>
+// Use shared image pool with curated hero images for organic layouts
+const IMAGES = createImageMapping({
+  hero: {
+    one: "https://colorsofjoy.dk/webshopmedia/Tigerlilly%2009.jpeg",
+    two: "https://colorsofjoy.dk/webshopmedia/Zoe%CC%81%2003.jpeg",
+    three: "https://colorsofjoy.dk/webshopmedia/Tigerlilly10.jpeg",
+    four: "https://colorsofjoy.dk/webshopmedia/Tigerlilly%2011.jpeg"
+  }
+});
+
+document.querySelectorAll("[data-img]").forEach(el => {
+  const path = el.dataset.img.split(".");
+  let ref = IMAGES;
+  path.forEach(k => ref = ref[k]);
+
+  if (el.classList.contains("blob") || el.classList.contains("wave") || el.classList.contains("float-img")) {
+    el.style.backgroundImage = `url(${ref})`;
+  } else {
+    el.src = ref;
+  }
+});
+
+document.getElementById("templateSelect").addEventListener("change", e => {
+  document.querySelectorAll(".template").forEach(t => t.classList.remove("active"));
+  document.getElementById(e.target.value).classList.add("active");
+});
+</script>
+
+</body>
+</html>

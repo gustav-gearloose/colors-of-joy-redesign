@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Colors of Joy – Soft Editorial</title>
+
+  <style>
+    :root {
+      --cream: #F6F1E7;
+      --sand: #E8DEC8;
+      --blush: #E3B6AF;
+      --clay: #C77860;
+      --ink: #3B3634;
+      --muted: #7D7874;
+
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--serif);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 0.6rem;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      line-height: 1.15;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      font-family: var(--sans);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    p {
+      max-width: 48ch;
+      color: var(--muted);
+    }
+
+    a.cta {
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--ink);
+      color: var(--ink);
+    }
+
+    /* Navigation */
+    #backNav {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      z-index: 1000;
+    }
+
+    #templateSelect {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1000;
+      padding: 0.4em;
+      font-family: var(--sans);
+    }
+
+    /* Templates */
+    .template {
+      display: none;
+    }
+
+    .template.active {
+      display: block;
+    }
+
+    section.section {
+      padding: 5rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding-top: 7rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 3rem;
+    }
+
+    .editorial-grid {
+      display: grid;
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .highlight {
+      background: var(--sand);
+      border-radius: 1rem;
+      padding: 3rem 1.5rem;
+    }
+
+    .footer-cta {
+      text-align: center;
+      background: var(--blush);
+      border-radius: 1.2rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero-grid {
+        grid-template-columns: 1.2fr 1fr;
+        align-items: center;
+      }
+
+      .editorial-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      h1 {
+        font-size: 3.2rem;
+      }
+
+      section.section {
+        padding: 7rem 3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="backNav">
+  <a href="../index.html">← Back to Gallery</a>
+</div>
+
+<select id="templateSelect">
+  <option value="t1">Variation 1</option>
+  <option value="t2">Variation 2</option>
+  <option value="t3">Variation 3</option>
+  <option value="t4">Variation 4</option>
+  <option value="t5">Variation 5</option>
+</select>
+
+<!-- ================= TEMPLATE 1 ================= -->
+<section id="t1" class="template active">
+
+  <section class="section hero">
+    <div class="hero-grid">
+      <div>
+        <h3>Kapitel 1</h3>
+        <h1>Et univers af glæde</h1>
+        <p>Colors of Joy er et legende smykeunivers fyldt med varme, farver og personlighed.</p>
+        <a class="cta">Shop kollektionen</a>
+      </div>
+      <img data-img="hero.one">
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Håndlavet i små serier</h2>
+    <div class="editorial-grid">
+      <p>Hvert smykke skabes med omtanke og fokus på detaljer – aldrig masseproduktion.</p>
+      <p>Vi tror på langsom designproces og smykker, der føles personlige.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Udvalgte favoritter</h2>
+    <div class="product-grid">
+      <img data-img="products.one">
+      <img data-img="products.two">
+      <img data-img="products.three">
+    </div>
+  </section>
+
+  <section class="section highlight">
+    <h2>Farver der bringer glæde</h2>
+    <p>Smykkerne er skabt til at blive båret igen og igen – og til at gøre dig glad.</p>
+  </section>
+
+  <section class="section footer-cta">
+    <h2>Find dit næste smykke</h2>
+    <a class="cta">Shop nu</a>
+  </section>
+
+</section>
+
+<!-- ================= TEMPLATE 2 ================= -->
+<section id="t2" class="template">
+
+  <section class="section hero">
+    <div class="hero-grid">
+      <div>
+        <h3>Editorial</h3>
+        <h1>Smykker med personlighed</h1>
+        <p>Designet til at understøtte din stil – ikke overdøve den.</p>
+        <a class="cta">Se nyheder</a>
+      </div>
+      <img data-img="hero.two">
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Designfilosofi</h2>
+    <div class="editorial-grid">
+      <p>Vi arbejder intuitivt med form og farve.</p>
+      <p>Alle smykker er designet til at kunne mikses.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Populære designs</h2>
+    <div class="product-grid">
+      <img data-img="products.two">
+      <img data-img="products.four">
+    </div>
+  </section>
+
+  <section class="section footer-cta">
+    <h2>Skabt til hverdagen</h2>
+    <a class="cta">Udforsk kollektionen</a>
+  </section>
+
+</section>
+
+<!-- ================= TEMPLATE 3 ================= -->
+<section id="t3" class="template">
+
+  <section class="section hero">
+    <div class="hero-grid">
+      <div>
+        <h3>Historien</h3>
+        <h1>Smykker der føles ægte</h1>
+        <p>Colors of Joy er skabt ud fra en kærlighed til håndværk.</p>
+        <a class="cta">Læs historien</a>
+      </div>
+      <img data-img="hero.three">
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Materialer & form</h2>
+    <p>Vi vælger materialer med omhu og respekt for processen.</p>
+  </section>
+
+  <section class="section">
+    <div class="product-grid">
+      <img data-img="products.one">
+      <img data-img="products.three">
+    </div>
+  </section>
+
+  <section class="section footer-cta">
+    <h2>Et smykke med mening</h2>
+    <a class="cta">Shop nu</a>
+  </section>
+
+</section>
+
+<!-- ================= TEMPLATE 4 ================= -->
+<section id="t4" class="template">
+
+  <section class="section hero">
+    <div class="hero-grid">
+      <div>
+        <h3>Kollektion</h3>
+        <h1>Leg med farver</h1>
+        <p>Designet til dig, der elsker det uperfekte.</p>
+        <a class="cta">Se kollektionen</a>
+      </div>
+      <img data-img="hero.four">
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Mix & match</h2>
+    <div class="product-grid">
+      <img data-img="products.one">
+      <img data-img="products.two">
+      <img data-img="products.four">
+    </div>
+  </section>
+
+  <section class="section footer-cta">
+    <h2>Skab dit eget udtryk</h2>
+    <a class="cta">Shop smykker</a>
+  </section>
+
+</section>
+
+<!-- ================= TEMPLATE 5 ================= -->
+<section id="t5" class="template">
+
+  <section class="section hero">
+    <div class="hero-grid">
+      <div>
+        <h3>Colors of Joy</h3>
+        <h1>Smykker med glæde</h1>
+        <p>Et varmt og legende univers – skabt med hjertet.</p>
+        <a class="cta">Shop favoritter</a>
+      </div>
+      <img data-img="hero.five">
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Vores løfte</h2>
+    <div class="editorial-grid">
+      <p>Håndlavet i små serier.</p>
+      <p>Designet til at holde – både i stil og kvalitet.</p>
+    </div>
+  </section>
+
+  <section class="section footer-cta">
+    <h2>Oplev universet</h2>
+    <a class="cta">Shop nu</a>
+  </section>
+
+</section>
+
+<script src="../image-pool.js"></script>
+<script>
+  const select = document.getElementById('templateSelect');
+  const templates = document.querySelectorAll('.template');
+
+  select.addEventListener('change', () => {
+    templates.forEach(t => t.classList.remove('active'));
+    document.getElementById(select.value).classList.add('active');
+  });
+</script>
+
+</body>
+</html>
