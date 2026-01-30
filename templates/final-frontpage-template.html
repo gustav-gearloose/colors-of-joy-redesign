@@ -5,12 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Colors of Joy – Smykker med glæde</title>
 
-  <!-- Modern Love font for headings -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-
   <style>
+    /* ===============================
+       Brand typography – Modern Love (onlinewebfonts.com)
+    =============================== */
+    @font-face {
+      font-family: "Modern Love";
+      src: url("https://db.onlinewebfonts.com/t/67ea27c3da839c5d408a479f5fb9fd39.eot");
+      src: url("https://db.onlinewebfonts.com/t/67ea27c3da839c5d408a479f5fb9fd39.eot?#iefix") format("embedded-opentype"),
+           url("https://db.onlinewebfonts.com/t/67ea27c3da839c5d408a479f5fb9fd39.woff2") format("woff2"),
+           url("https://db.onlinewebfonts.com/t/67ea27c3da839c5d408a479f5fb9fd39.woff") format("woff"),
+           url("https://db.onlinewebfonts.com/t/67ea27c3da839c5d408a479f5fb9fd39.ttf") format("truetype"),
+           url("https://db.onlinewebfonts.com/t/67ea27c3da839c5d408a479f5fb9fd39.svg#Modern Love") format("svg");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
     /* ===============================
        Brand Design System
        Colors of Joy Designmanual (April 2020)
@@ -30,7 +41,7 @@
       --coj-gold: #C9A24D;         /* Logo + subtle highlights only */
 
       /* Typography */
-      --font-heading: 'Cormorant Garamond', Georgia, serif;
+      --font-heading: 'Modern Love', Georgia, serif;
       --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
       /* Spacing */
@@ -69,9 +80,13 @@
       color: var(--coj-text-dark);
     }
 
+    h1, h2 {
+      letter-spacing: 0.02em;
+      line-height: 1.15;
+    }
+
     h1 {
       font-size: clamp(2.2rem, 5vw, 3.5rem);
-      letter-spacing: -0.01em;
     }
 
     h2 {
@@ -347,7 +362,7 @@
       align-items: center;
       gap: 0.5rem;
       font-family: var(--font-heading);
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: var(--coj-text-muted);
       text-decoration: none;
       padding: var(--space-xs) 0;
