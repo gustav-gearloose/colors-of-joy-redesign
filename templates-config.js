@@ -119,6 +119,17 @@ const TEMPLATE_COLLECTIONS = [
   thumbnail: 'https://colorsofjoy.dk/webshopmedia/Liva%2004.jpeg',
   featured: false
 },
+{
+  id: 'final-frontpage',
+  file: 'final-frontpage-template.html',
+  name: 'Final Brand Template',
+  description: 'The approved production-ready frontpage design. Official brand colors, Modern Love typography, floating menu, and editorial layout.',
+  style: 'Final',
+  tags: ['final', 'production', 'brand', 'approved', 'frontpage'],
+  variations: 1,
+  thumbnail: 'https://colorsofjoy.dk/webshopmedia/Tigerlilly%2001.jpeg',
+  featured: true
+},
 ];
 
 /**

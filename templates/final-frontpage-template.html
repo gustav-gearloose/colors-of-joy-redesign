@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Colors of Joy – Smykker med glæde</title>
+
+  <!-- Modern Love font for headings -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===============================
+       Brand Design System
+       Colors of Joy Designmanual (April 2020)
+    =============================== */
+    :root {
+      /* Core brand colors */
+      --coj-pink-light: #F1D3D5;   /* Pantone 691 U - Primary background */
+      --coj-rose-dark: #98656C;    /* Pantone 696 U - Contrast/accents */
+
+      /* Neutrals */
+      --coj-white: #ffffff;
+      --coj-offwhite: #f6f3ed;
+      --coj-text-dark: #2b2b2b;
+      --coj-text-muted: #6f6a64;
+
+      /* Accent */
+      --coj-gold: #C9A24D;         /* Logo + subtle highlights only */
+
+      /* Typography */
+      --font-heading: 'Cormorant Garamond', Georgia, serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+      /* Spacing */
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 2rem;
+      --space-lg: 4rem;
+      --space-xl: 6rem;
+    }
+
+    /* ===============================
+       Base Reset & Typography
+    =============================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--coj-offwhite);
+      color: var(--coj-text-dark);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-heading);
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--coj-text-dark);
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      letter-spacing: -0.01em;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    p {
+      color: var(--coj-text-muted);
+      max-width: 48ch;
+      line-height: 1.7;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* ===============================
+       Notification Bar (Optional Hook)
+    =============================== */
+    .notification-bar {
+      background: var(--coj-rose-dark);
+      color: var(--coj-white);
+      text-align: center;
+      padding: var(--space-xs) var(--space-sm);
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+    }
+
+    .notification-bar:empty {
+      display: none;
+    }
+
+    /* ===============================
+       Floating Menu
+    =============================== */
+    .floating-menu {
+      position: fixed;
+      top: var(--space-md);
+      right: var(--space-md);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .menu-toggle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--coj-white);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .menu-toggle:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+
+    .menu-toggle svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--coj-text-dark);
+    }
+
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--coj-offwhite);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .menu-overlay nav a {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      color: var(--coj-text-dark);
+      text-decoration: none;
+      padding: var(--space-xs) 0;
+      transition: color 0.2s ease;
+    }
+
+    .menu-overlay nav a:hover {
+      color: var(--coj-rose-dark);
+    }
+
+    .menu-close {
+      position: absolute;
+      top: var(--space-md);
+      right: var(--space-md);
+      width: 48px;
+      height: 48px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--coj-text-dark);
+    }
+
+    /* Logo in menu */
+    .logo-mark {
+      width: 60px;
+      height: auto;
+      margin-bottom: var(--space-sm);
+    }
+
+    .logo-mark svg {
+      width: 100%;
+      height: auto;
+      fill: var(--coj-gold);
+    }
+
+    /* ===============================
+       Hero Section
+    =============================== */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      min-height: 90vh;
+      background: var(--coj-pink-light);
+    }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 50vh;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--space-lg) var(--space-md);
+      gap: var(--space-sm);
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      margin-top: var(--space-xs);
+    }
+
+    .cta-button {
+      display: inline-block;
+      margin-top: var(--space-md);
+      padding: 1rem 2rem;
+      background: var(--coj-text-dark);
+      color: var(--coj-white);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      align-self: flex-start;
+    }
+
+    .cta-button:hover {
+      background: var(--coj-rose-dark);
+    }
+
+    @media (min-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-content {
+        padding: var(--space-xl);
+        order: -1;
+      }
+    }
+
+    /* ===============================
+       Categories Strip
+    =============================== */
+    .categories {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-lg) var(--space-md);
+      background: var(--coj-offwhite);
+    }
+
+    .categories-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-sm) var(--space-lg);
+    }
+
+    .category-link {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      color: var(--coj-text-muted);
+      text-decoration: none;
+      padding: var(--space-xs) 0;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    .category-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--coj-rose-dark);
+      transition: width 0.3s ease;
+    }
+
+    .category-link:hover {
+      color: var(--coj-rose-dark);
+    }
+
+    .category-link:hover::after {
+      width: 100%;
+    }
+
+    .category-link span {
+      font-size: 0.9rem;
+      margin-left: 0.3em;
+    }
+
+    /* ===============================
+       Split Section (Text + Image)
+    =============================== */
+    .split-section {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+      padding: var(--space-lg) var(--space-md);
+      background: var(--coj-white);
+    }
+
+    .split-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--space-sm);
+    }
+
+    .split-content h2 {
+      color: var(--coj-text-dark);
+    }
+
+    .split-image img {
+      border-radius: 4px;
+      object-fit: cover;
+      aspect-ratio: 4/5;
+    }
+
+    @media (min-width: 900px) {
+      .split-section {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-lg);
+        padding: var(--space-xl);
+      }
+
+      .split-content {
+        padding-right: var(--space-lg);
+      }
+    }
+
+    /* ===============================
+       Inspiration Grid
+    =============================== */
+    .inspiration {
+      padding: var(--space-lg) var(--space-md);
+      background: var(--coj-pink-light);
+    }
+
+    .inspiration-header {
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+
+    .inspiration-header h2 {
+      color: var(--coj-text-dark);
+    }
+
+    .inspiration-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-sm);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .inspiration-item {
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .inspiration-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 1;
+      transition: transform 0.4s ease;
+    }
+
+    .inspiration-item:hover img {
+      transform: scale(1.03);
+    }
+
+    @media (min-width: 768px) {
+      .inspiration {
+        padding: var(--space-xl) var(--space-md);
+      }
+
+      .inspiration-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-md);
+      }
+    }
+
+    /* ===============================
+       Footer
+    =============================== */
+    .footer {
+      padding: var(--space-lg) var(--space-md);
+      background: var(--coj-offwhite);
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      width: 40px;
+      height: auto;
+      margin: 0 auto var(--space-md);
+    }
+
+    .footer-logo svg {
+      width: 100%;
+      fill: var(--coj-gold);
+    }
+
+    .footer h3 {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: var(--space-sm);
+      color: var(--coj-text-dark);
+    }
+
+    .footer p {
+      margin: 0 auto;
+      font-size: 0.95rem;
+      color: var(--coj-text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+      font-size: 0.9rem;
+    }
+
+    .footer-links a {
+      color: var(--coj-text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--coj-rose-dark);
+    }
+
+    .footer-copyright {
+      margin-top: var(--space-lg);
+      font-size: 0.8rem;
+      color: var(--coj-text-muted);
+    }
+
+    /* ===============================
+       Back Navigation (Template Gallery)
+    =============================== */
+    #backNav {
+      position: fixed;
+      top: var(--space-md);
+      left: var(--space-md);
+      z-index: 1000;
+      font-size: 0.85rem;
+    }
+
+    #backNav a {
+      color: var(--coj-text-dark);
+      text-decoration: none;
+      background: var(--coj-white);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      transition: box-shadow 0.2s ease;
+    }
+
+    #backNav a:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Back Navigation (Template Gallery) -->
+  <div id="backNav">
+    <a href="../index.html">← Tilbage til galleri</a>
+  </div>
+
+  <!-- Main App Container -->
+  <div id="app"></div>
+
+  <!-- Scripts -->
+  <script src="../image-pool.js"></script>
+  <script>
+    const app = document.getElementById("app");
+
+    // SVG Logo mark (inline for crisp rendering)
+    const logoSVG = `
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <text x="20" y="26" text-anchor="middle" font-family="serif" font-size="14" fill="currentColor">CoJ</text>
+      </svg>
+    `;
+
+    // Menu icon SVG
+    const menuIconSVG = `
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <line x1="4" y1="7" x2="20" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="4" y1="17" x2="20" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    `;
+
+    app.innerHTML = `
+      <!-- Notification Bar (Optional - leave empty to hide) -->
+      <div class="notification-bar"></div>
+
+      <!-- Floating Menu -->
+      <div class="floating-menu">
+        <button class="menu-toggle" aria-label="Åbn menu">
+          ${menuIconSVG}
+        </button>
+      </div>
+
+      <!-- Menu Overlay -->
+      <div class="menu-overlay" id="menuOverlay">
+        <button class="menu-close" aria-label="Luk menu">×</button>
+        <div class="logo-mark">${logoSVG}</div>
+        <nav>
+          <a href="#shop">Shop</a>
+          <a href="#kollektioner">Kollektioner</a>
+          <a href="#om-os">Om os</a>
+          <a href="#kontakt">Kontakt</a>
+        </nav>
+      </div>
+
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Design & håndværk</h1>
+          <p>Smykker skabt med omtanke, kærlighed og et slow fashion mindset. Hver detalje er gennemtænkt – designet til at bringe glæde dag efter dag.</p>
+          <a href="#shop" class="cta-button">Shop nu</a>
+        </div>
+        <div class="hero-image">
+          <img data-img="hero.main" alt="Colors of Joy smykke">
+        </div>
+      </section>
+
+      <!-- Categories Strip -->
+      <section class="categories">
+        <nav class="categories-nav">
+          <a href="#life" class="category-link">Colors of Life</a>
+          <a href="#joy" class="category-link">Colors of Joy</a>
+          <a href="#love" class="category-link">Colors of Love</a>
+        </nav>
+      </section>
+
+      <!-- Split Section: Text + Image -->
+      <section class="split-section">
+        <div class="split-content">
+          <h2>Skabt til at blive dine smykkefavoritter</h2>
+          <p>Hvert smykke er håndlavet i små serier og designet til at følge dig i hverdagen. Tidløst, personligt og med plads til at udtrykke dig selv.</p>
+          <a href="#shop" class="cta-button">Udforsk kollektionen</a>
+        </div>
+        <div class="split-image">
+          <img data-img="split.featured" alt="Håndlavede smykker">
+        </div>
+      </section>
+
+      <!-- Inspiration Grid -->
+      <section class="inspiration">
+        <div class="inspiration-header">
+          <h2>Find inspiration til dit look</h2>
+        </div>
+        <div class="inspiration-grid">
+          <div class="inspiration-item">
+            <img data-img="inspiration.one" alt="Inspiration 1">
+          </div>
+          <div class="inspiration-item">
+            <img data-img="inspiration.two" alt="Inspiration 2">
+          </div>
+          <div class="inspiration-item">
+            <img data-img="inspiration.three" alt="Inspiration 3">
+          </div>
+          <div class="inspiration-item">
+            <img data-img="inspiration.four" alt="Inspiration 4">
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-logo">${logoSVG}</div>
+          <h3>Colors of Joy</h3>
+          <p>Håndlavede smykker med glæde og personlighed. Designet i Danmark.</p>
+          <div class="footer-links">
+            <a href="mailto:hello@colorsofjoy.dk">Email</a>
+            <a href="https://instagram.com/colorsofjoy" target="_blank" rel="noopener">Instagram</a>
+            <a href="#kontakt">Kontakt</a>
+          </div>
+          <p class="footer-copyright">© 2024 Colors of Joy. Alle rettigheder forbeholdes.</p>
+        </div>
+      </footer>
+    `;
+
+    // Image mapping with curated selections
+    const IMAGES = createImageMapping({
+      hero: {
+        main: "https://colorsofjoy.dk/webshopmedia/Tigerlilly%2001.jpeg"
+      },
+      split: {
+        featured: "https://colorsofjoy.dk/webshopmedia/Liva%2004.jpeg"
+      },
+      inspiration: {
+        one: "https://colorsofjoy.dk/webshopmedia/Always%2091.jpeg",
+        two: "https://colorsofjoy.dk/webshopmedia/Sofia%2001.jpeg",
+        three: "https://colorsofjoy.dk/webshopmedia/Zoe%CC%81%2001.jpeg",
+        four: "https://colorsofjoy.dk/webshopmedia/SEA%2010.jpeg"
+      }
+    });
+
+    // Bind images to data-img attributes
+    document.querySelectorAll("[data-img]").forEach(el => {
+      const path = el.dataset.img.split(".");
+      let ref = IMAGES;
+      path.forEach(k => ref = ref[k]);
+
+      if (el.tagName === 'IMG') {
+        el.src = ref;
+      } else {
+        el.style.backgroundImage = `url(${ref})`;
+      }
+    });
+
+    // Menu toggle functionality
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menuClose = document.querySelector('.menu-close');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    menuToggle.addEventListener('click', () => {
+      menuOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    menuClose.addEventListener('click', () => {
+      menuOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    // Close menu on link click
+    menuOverlay.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Close menu on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
+        menuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+
+</body>
+</html>
